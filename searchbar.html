@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="input" oninput="search()" />
+    <div id="preview"></div>
+  </body>
+</html>
+<script>
+  let products = ["iphone", "samsung", "xiaomi", "oneplus", "nokia"];
+  function search(params) {
+    let inputValue = document
+      .getElementById("input")
+      .value.replaceAll(" ", "")
+      .trim()
+      .toLowerCase();
+    let filteredProducts = products.filter((product) => {
+      return product.includes(inputValue);
+    });
+
+    if (filteredProducts.length === 0) {
+      preview.innerHTML = "Product does not exist";
+    } else {
+      preview.innerHTML = "";
+      filteredProducts.forEach((product) => {
+        preview.innerHTML += `<p>${product}</p>`;
+      });
+    }
+  }
+  function display(params) {
+    products.forEach((product) => {
+      preview.innerHTML += `<p>${product}</p>`;
+    });
+  }
+  display();
+</script>
